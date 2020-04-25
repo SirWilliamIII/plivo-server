@@ -3,13 +3,14 @@ const express = require('express')
 const hbs = require('hbs')
 
 const app = express()
-const PORT = 3333
+const PORT = 4000
 
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
-const message = require('./util/message')
+const messages = require('./util/createMessage')
+const logs = require('./util/getLogs')
 
 
 app.set('view engine', 'hbs')
@@ -26,32 +27,39 @@ app.get('/send_message', (req, res) => {
 			error: "Enter a number"
 		})
 	}
-	if (!req.query.msg) {
+	if (!req.query.message) {
 		return res.send({
 			error: "Enter a message"
 		})
 	}
-	message.createMessage(req.query.number, req.query.msg)
+	messages.createMessage(req.query.number, req.query.message)
 	data = {
-		message: req.query.msg,
+		message: req.query.message,
 		number: req.query.number
 	}
-	res.send(data)
+	res.render('send_message', {
+		message: data.message,
+		number: data.number
+	})
 })
 
 app.get('/logs', (req, res) => {
-    res.render('logs', {
-        title: 'Logs',
-        name: 'Message logs'
-    })
+
+	data = ""
+	console.log(logs.getLogs())
+
+
+	res.render('logs', {
+
+	})
 })
 
 app.get('*', (req, res) => {
-    res.render('404', {
-        title: '404',
-        name: 'Will Carpenter',
-        errorMessage: 'Page not found.'
-    })
+	res.render('404', {
+		title: '404',
+		name: 'Will Carpenter',
+		errorMessage: 'Page not found.'
+	})
 })
 
 app.listen(PORT, () => {
