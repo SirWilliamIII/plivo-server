@@ -3,18 +3,48 @@
 <html>
 
 <head>
-    <title>About</title>
-    <link rel="icon" href="/img/weather.png">
+    <title>Message Logs</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
         <br><br><br>
-        {{ logs }}
+        <table>
+            <tr>
+                <th>DATE</th>
+                <th>UUID</th>
+                <th>FROM</th>
+                <th>TO</th>
+                <th>MESSAGE</th>
+            </tr>
+            <tr>
+                <td>{{ date }}</td>
+                <td>{{ uuid }}</td>
+                <td>{{ fromNum }}</td>
+                <td>{{ toNum }}</td>
+                <td>{{ message }}</td>
+            </tr>
+        </table>
+
+
+
     </div>
-    
+
     {{>footer}}
 </body>
 

@@ -19,6 +19,13 @@ hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirPath))
 
+app.get('', (req, res) => {
+	res.render('index', {
+		title: 'HOME',
+		name: 'Will Carpenter'
+	})
+})
+
 
 app.get('/send_message', (req, res) => {
 
@@ -44,14 +51,17 @@ app.get('/send_message', (req, res) => {
 })
 
 app.get('/logs', (req, res) => {
-
-	data = ""
-	console.log(logs.getLogs())
-
-
-	res.render('logs', {
-
-	})
+	logs.getLogs()
+		.then(res => {
+			return res
+		}).then(r => {
+			res.render('logs', {
+				date: r.messageTime,
+				uuid: r.id,
+				fromNum: r.fromNumber,
+				toNum: r.toNumber
+			})
+		})
 })
 
 app.get('*', (req, res) => {

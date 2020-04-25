@@ -12,15 +12,10 @@ const src = "12082072987"
 getLogs = () => {
     'use strict';
     var client = new plivo.Client(AUTH, TOKEN);
-    let msg = client.messages.get('99307b44-8712-11ea-b9e3-0242ac110003')
+    const uuid = '99307b44-8712-11ea-b9e3-0242ac110003'
 
-    console.log(msg)
-
-    msg.then(res => {
-        console.log(res.id)
-    })
-
-
+    let msg = client.messages.get(uuid)
+    return msg
 }
 
 
