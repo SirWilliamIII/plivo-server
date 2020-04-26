@@ -28,7 +28,7 @@ inputForm.addEventListener('submit', e => {
 
     messageOne.textContent = 'Loading...'
 
-    fetch("http://https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
+    fetch("https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
         .then(res => {
             console.log(res)
             if (res.status != 200) {
