@@ -52,19 +52,18 @@ app.get('/send_message', (req, res) => {
 
 
 app.get('/logs', (req, res) => {
-	logs.getLogs()
-		.then(res => {
-			return res
+	logs()
+		.then(resp => {
+			return resp
 		}).then(r => {
+			console.log(r[0])
 			res.render('logs', {
-				title: r.fromNumber,
-				date: r.messageTime,
-				uuid: r.id,
-				fromNum: r.fromNumber,
-				toNum: r.toNumber
+				logs: r
 			})
 		})
 })
+
+
 
 app.get('*', (req, res) => {
 	res.render('404', {

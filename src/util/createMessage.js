@@ -13,7 +13,9 @@ const createMessage = (dest, msg) => {
             method: "POST",
             url: "http://example.com/sms_status/"
         }
-    )
+    ).then(res => {
+        console.log(res)
+    })
 }
 
 module.exports = createMessage

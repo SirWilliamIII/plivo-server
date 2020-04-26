@@ -26,21 +26,22 @@
         <table class="table">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>DATE</th>
-                <th>UUID</th>
+             
                 <th>FROM</th>
                 <th>TO</th>
-                <th>MESSAGE</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>{{ date }}</td>
-                <td>{{ uuid }}</td>
-                <td>{{ fromNum }}</td>
-                <td>{{ toNum }}</td>
-                <td>{{ message }}</td>
-            </tr>
+                {{#each logs}}
+                <tr>
+                    <td>{{ this.id }}</td>
+                    <td>{{ this.messageTime }}</td>
+                    <td>{{ this.fromNumber }}</>
+                    <td>{{ this.toNumber }}</td>
+                </tr>
+                {{/each}}
             </tbody>
         </table>
     {{>footer}}
