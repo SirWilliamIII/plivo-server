@@ -53,16 +53,39 @@ app.get('/send_message', (req, res) => {
 ////////////////////////////
 
 
+
 app.get('/logs', (req, res) => {
-	logs()
-		.then(resp => {
-			return resp
-		}).then(r => {
-			console.log(r[0])
-			res.render('logs', {
-				logs: r
+
+	let f = ""
+	let t = ""
+
+	if (!req.query.fromDate || !req.query.toDate) {
+		logs("2020-03-01 01:01", "2020-05-01 01:01")
+			.then(resp => {
+				console.log(resp)
+				return resp
+			}).then(r => {
+				res.render('logs', {
+					logs: r
+				})
 			})
-		})
+	} else if (req.query.fromDate || req.query.toDate) {
+
+		f = req.query.fromDate
+		t = req.query.toDate
+
+		logs(f, t)
+			.then(resp => {
+
+				return resp
+			}).then(r => {
+				console.log(r)
+				res.render('logs', {
+					logs: r
+				})
+			})
+
+	}
 })
 
 

@@ -22,13 +22,22 @@
 <body>
     <div class="container">
         {{>header}}
+
+        <form id="form2">
+            <div class="form-group">
+                <input name="fromDate" placeholder="from date">
+            </div>
+            <div class="form-group">
+                <input name="toDate" placeholder="to date">
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Filter</button>
+        </form>
         <br><br><br>
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>DATE</th>
-             
                 <th>FROM</th>
                 <th>TO</th>
                 <th>DIRECTION</th>
@@ -48,8 +57,11 @@
                 {{/each}}
             </tbody>
         </table>
-    {{>footer}}
+    
     </div>
+    {{>footer}}
+
+    <script src="../../public/js/app.js"></script>
 </body>
 
 </html>

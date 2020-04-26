@@ -13,10 +13,9 @@ console.log('Client side javascript file is loaded!')
 //         })
 // })
 
-const inputForm = document.querySelector('form')
+let inputForm = document.getElementById("form1")
 const message = document.querySelector("input[name='message']")
 const number = document.querySelector("input[name='number']")
-
 const messageOne = document.querySelector('#resultsMessage')
 
 
@@ -28,9 +27,29 @@ inputForm.addEventListener('submit', e => {
 
     messageOne.textContent = 'Loading...'
 
-    fetch("https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
+    fetch("http://localhost:3000/send_message?number=" + n + "&message=" + m)
         .then(res => {
             console.log(res)
+            if (res.status != 200) {
+                messageOne.textContent = "Error"
+            } else {
+                messageOne.textContent = ""
+            }
+        })
+})
+
+let dateForm = document.getElementById("form2")
+const fromDate = document.querySelector("input[name='fromDate']")
+const toDate = document.querySelector("input[name='toDate']")
+
+dateForm.addEventListener('click', e => {
+    e.preventDefault()
+
+    const f = fromDate.value
+    const t = toDate.value
+    console.log(f)
+    fetch("http://localhost:3000/logs?fromDate=" + f + "&toDate=" + t)
+        .then(res => {
             if (res.status != 200) {
                 messageOne.textContent = "Error"
             } else {
