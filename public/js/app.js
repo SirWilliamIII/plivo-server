@@ -28,7 +28,7 @@ inputForm.addEventListener('submit', e => {
 
     messageOne.textContent = 'Loading...'
 
-    fetch("http://localhost:4000/send_message?number=" + n + "&message=" + m)
+    fetch("http://localhost:3000/send_message?number=" + n + "&message=" + m)
         .then(res => {
             console.log(res)
             if (res.status != 200) {
