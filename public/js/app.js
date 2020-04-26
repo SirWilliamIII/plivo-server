@@ -27,7 +27,7 @@ inputForm.addEventListener('submit', e => {
 
     messageOne.textContent = 'Loading...'
 
-    fetch("http://localhost:3000/send_message?number=" + n + "&message=" + m)
+    fetch("https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
         .then(res => {
             console.log(res)
             if (res.status != 200) {
@@ -48,7 +48,7 @@ dateForm.addEventListener('click', e => {
     const f = fromDate.value
     const t = toDate.value
     console.log(f)
-    fetch("http://localhost:3000/logs?fromDate=" + f + "&toDate=" + t)
+    fetch("https://plivo-express.herokuapp.com/logs?fromDate=" + f + "&toDate=" + t)
         .then(res => {
             if (res.status != 200) {
                 messageOne.textContent = "Error"
