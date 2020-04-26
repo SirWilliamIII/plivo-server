@@ -2,15 +2,15 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 
+const messages = require('./util/createMessage')
+const logs = require('./util/getLogs')
+
 const app = express()
 const PORT = 4000
 
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
-
-const messages = require('./util/createMessage')
-const logs = require('./util/getLogs')
 
 
 app.set('view engine', 'hbs')
@@ -19,14 +19,15 @@ hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirPath))
 
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
 	res.render('index', {
-		title: 'HOME',
+		title: 'TEXT SOMEONE',
 		name: 'Will Carpenter'
 	})
 })
 
 
+// Endpoint to send text
 app.get('/send_message', (req, res) => {
 
 	if (!req.query.number) {
@@ -39,16 +40,16 @@ app.get('/send_message', (req, res) => {
 			error: "Enter a message"
 		})
 	}
-	messages.createMessage(req.query.number, req.query.message)
-	data = {
+
+	messages(req.query.number, req.query.message)
+
+	res.render('send_message', {
 		message: req.query.message,
 		number: req.query.number
-	}
-	res.render('send_message', {
-		message: data.message,
-		number: data.number
 	})
 })
+////////////////////////////
+
 
 app.get('/logs', (req, res) => {
 	logs.getLogs()
