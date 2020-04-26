@@ -57,6 +57,7 @@ app.get('/logs', (req, res) => {
 			return res
 		}).then(r => {
 			res.render('logs', {
+				title: r.fromNumber,
 				date: r.messageTime,
 				uuid: r.id,
 				fromNum: r.fromNumber,
