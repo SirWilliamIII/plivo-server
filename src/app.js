@@ -6,6 +6,7 @@ const helpers = require('handlebars-helpers');
 const messages = require('./util/createMessage')
 const logs = require('./util/getLogs')
 
+
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -22,6 +23,7 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirPath))
 
 app.get('/', (req, res) => {
+	console.log(req)
 	res.render('index', {
 		title: 'TEXT SOMEONE',
 		name: 'Will Carpenter'
