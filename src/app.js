@@ -7,7 +7,8 @@ const messages = require('./util/createMessage')
 const logs = require('./util/getLogs')
 
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT || 3000
+
 
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
