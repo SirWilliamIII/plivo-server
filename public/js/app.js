@@ -30,7 +30,6 @@ inputForm.addEventListener('submit', e => {
 
     fetch("http://localhost:4000/send_message?number=" + n + "&message=" + m)
         .then(res => {
-
             if (res.status != 200) {
                 messageOne.textContent = "Error"
             } else {
