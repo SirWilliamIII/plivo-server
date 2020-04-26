@@ -31,6 +31,8 @@
              
                 <th>FROM</th>
                 <th>TO</th>
+                <th>DIRECTION</th>
+                <th>STATE</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +42,8 @@
                     <td>{{ this.messageTime }}</td>
                     <td>{{ this.fromNumber }}</>
                     <td>{{ this.toNumber }}</td>
+                    <td>{{ this.messageDirection }} </td>
+                    <td>{{ this.messageState }}</td>
                 </tr>
                 {{/each}}
             </tbody>

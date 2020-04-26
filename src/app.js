@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const helpers = require('handlebars-helpers');
 
 const messages = require('./util/createMessage')
 const logs = require('./util/getLogs')
