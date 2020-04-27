@@ -65,7 +65,7 @@ inputForm.addEventListener('submit', e => {
     messageTwo.textContent = ''
 
     if (isValidNum(number)) {
-        fetch("http://localhost:3000/send_message?number=" + n + "&message=" + m)
+        fetch("https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
             .then(res => {
                 console.log(res)
                 if (res.status != 200) {
@@ -91,7 +91,7 @@ dateForm.addEventListener('click', e => {
     let f = fromDate.value
     let t = toDate.value
 
-    let b = "localhost:3000/logs?fromDate="
+    let b = "https://plivo-express.herokuapp.com/logs?fromDate="
 
     const createUri = (base, fromDate, toDate) => {
         let from = fromDate
