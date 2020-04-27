@@ -10,7 +10,14 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
         integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-    
+    <style>
+        #footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            /* Footer height */
+        }
+    </style>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -22,17 +29,17 @@
 <body>
     <div class="container">
         {{>header}}
-
+<br><br><br>
         <form id="form2">
             <div class="form-group">
-                <label for="phonenum">Phone Number (format: xxxx-xxx-xxxx):</label><br />
-
+                <label for="phonenum">Date Format (format: YYYY-MM-DD HH:MM)</label><br />
                 <input name="fromDate" placeholder="from date">
             </div>
             <div class="form-group">
                 <input name="toDate" placeholder="to date">
             </div>
             <button type="submit" class="btn btn-outline-dark">Filter</button>
+            <a href="/logs"><button class="btn btn-success">Reset</button></a>
         </form>
         <br><br><br>
         <table class="table">
@@ -59,9 +66,10 @@
                 {{/each}}
             </tbody>
         </table>
-    
-    </div>
+        <br><br><br>
     {{>footer}}
+    </div>
+    
 
     <script src="../../public/js/app.js"></script>
 </body>

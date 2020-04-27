@@ -68,26 +68,28 @@ app.get('/logs', (req, res) => {
 				return resp
 			}).then(r => {
 				res.render('logs', {
-					logs: r
+					logs: r,
+					title: "LOGS"
 				})
 			})
-	} else if (req.query.fromDate || req.query.toDate) {
+	} else if (req.query.fromDate && req.query.toDate) {
 
 		f = req.query.fromDate
 		t = req.query.toDate
 
 		logs(f, t)
 			.then(resp => {
-
 				return resp
 			}).then(r => {
 				console.log(r)
 				res.render('logs', {
-					logs: r
+					logs: r,
+					title: "LOGS"
 				})
 			})
 
 	}
+	req.query.params = ''
 })
 
 

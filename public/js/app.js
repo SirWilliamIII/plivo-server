@@ -24,8 +24,8 @@ const resultMessage = document.querySelector('#resultsMessage1')
 const resultMessageThree = document.querySelector('#resultsMessage3')
 
 const isValidNum = (num) => {
-    var phoneno = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
-    if (num.value.match(phoneno)) {
+    var valNum = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
+    if (num.value.match(valNum)) {
         return true;
     } else {
 
@@ -41,6 +41,18 @@ const isBlank = (message) => {
         alert("Do not leave message field blank");
         return false;
     }
+}
+
+const isValidDate = (date) => {
+    var valDate = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/
+    if (date.value.match(valNum)) {
+        return true;
+    } else {
+
+        alert("Please enter date");
+        return false;
+    }
+
 }
 
 inputForm.addEventListener('submit', e => {
@@ -76,10 +88,18 @@ const toDate = document.querySelector("input[name='toDate']")
 dateForm.addEventListener('click', e => {
     e.preventDefault()
 
-    const f = fromDate.value
-    const t = toDate.value
-    console.log(f)
-    fetch("localhost:3000/logs?fromDate=" + f + "&toDate=" + t)
+    let f = fromDate.value
+    let t = toDate.value
+
+    let b = "localhost:3000/logs?fromDate="
+
+    const createUri = (base, fromDate, toDate) => {
+        let from = fromDate
+        let to = toDate
+        return base + from + "&toDate=" + to
+    }
+
+    fetch(createUri(b, f, t))
         .then(res => {
             if (res.status != 200) {
                 messageOne.textContent = "Error"

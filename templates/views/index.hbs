@@ -11,37 +11,58 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
         integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+        <style>
+            #footer {
+
+                position: absolute;
+                bottom: 10%;
+                width: 100%;
+                padding-left: 15%;
+                /* Footer height */
+            }
+        </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
+        
 </head>
 
 <body>
-    <div class="container">
-        {{>header}}
     
-        <form id="form1">
-            <div class="form-group">
-            <input name="number" placeholder="Enter Number">
-            </div>
-            <div class="form-group">
-            <input name="message" placeholder="Message">
-            </div>
-            <button type="submit" class="btn btn-outline-dark">Send</button>
-        </form>
+    <div class="container">
+        
+        <div class="container">
+            {{>header}}
+        <br><br><br><br>
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div id="form1">
+                    <div class="form-group">
+                    <input name="number" placeholder="Enter Number">
+                    </div>
+                    <div class="form-group">
+                    <input name="message" placeholder="Message">
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Send</button>
+                </div>
+                </div>
+            
+        <div class="col-sm-3"></div>
 
         <br><br><br>
         <p id="resultMessage1"></p>
         <p id="resultsMessage"></p>
         <p id="resultMessage3"></p>
         <p id="resultsMessage2"></p>
-    
-    {{>footer}}
     </div>
+    <br><br><br>
     
+    </div>
+    {{>footer}}
     <script src="/js/app.js"></script>
 </body>
 
