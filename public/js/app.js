@@ -24,7 +24,7 @@ const resultMessage = document.querySelector('#resultsMessage1')
 const resultMessageThree = document.querySelector('#resultsMessage3')
 
 const isValidNum = (num) => {
-    var valNum = /^[\+\d]?(?:[\d-.\s()]*)$/;
+    var valNum = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
     if (num.value.match(valNum)) {
         return true;
     } else {
@@ -45,7 +45,7 @@ const isBlank = (message) => {
 
 const isValidDate = (date) => {
     var valDate = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/
-    if (date.value.match(valNum)) {
+    if (date.value.match(valDate)) {
         return true;
     } else {
 
