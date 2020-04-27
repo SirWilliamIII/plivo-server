@@ -1,7 +1,5 @@
 console.log('Client side javascript file is loaded!')
 
-
-
 // var logsUrl = "http://localhost:4000/logs"
 
 // fetch(logsUrl).then(res => {
@@ -24,7 +22,7 @@ const resultMessage = document.querySelector('#resultsMessage1')
 const resultMessageThree = document.querySelector('#resultsMessage3')
 
 const isValidNum = (num) => {
-    var valNum = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    var valNum = /^\+?[0-9]+$/;
     if (num.value.match(valNum)) {
         return true;
     } else {
