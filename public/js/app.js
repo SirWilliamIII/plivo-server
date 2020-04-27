@@ -88,18 +88,7 @@ const toDate = document.querySelector("input[name='toDate']")
 dateForm.addEventListener('click', e => {
     e.preventDefault()
 
-    let f = fromDate.value
-    let t = toDate.value
-
-    let b = "https://plivo-express.herokuapp.com/logs?fromDate="
-
-    const createUri = (base, fromDate, toDate) => {
-        let from = fromDate
-        let to = toDate
-        return base + from + "&toDate=" + to
-    }
-
-    fetch(createUri(b, f, t))
+    fetch("https://plivo-express.herokuapp.com/logs?fromDate=" + fromDate.value + "&toDate=" + toDate.value)
         .then(res => {
             if (res.status != 200) {
                 messageOne.textContent = "Error"

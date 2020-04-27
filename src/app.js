@@ -6,14 +6,19 @@ const helpers = require('handlebars-helpers');
 const messages = require('./util/createMessage')
 const logs = require('./util/getLogs')
 
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-require('dotenv').config();
 
 const authKey = process.env.PLIVOAUTH
 const token = process.env.PLIVOTOKEN
+
+
+console.log(process.env)
 
 
 const publicDirPath = path.join(__dirname, '../public')

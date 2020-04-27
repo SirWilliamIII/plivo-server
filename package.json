@@ -13,8 +13,12 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "gitignore": "^0.6.0",
     "handlebars-helpers": "^0.10.0",
     "hbs": "^4.1.1",
     "plivo": "^4.5.1"
+  },
+  "devDependencies": {
+    "env": "0.0.2"
   }
 }
