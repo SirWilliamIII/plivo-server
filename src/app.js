@@ -10,6 +10,11 @@ const logs = require('./util/getLogs')
 const app = express()
 const PORT = process.env.PORT || 3000
 
+require('dotenv').config();
+
+const authKey = process.env.PLIVOAUTH
+const token = process.env.PLIVOTOKEN
+
 
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -45,7 +50,7 @@ app.get('/send_message', (req, res) => {
 		})
 	}
 
-	messages(req.query.number, req.query.message)
+	messages(req.query.number, req.query.message, authKey, token)
 
 	res.render('send_message', {
 		message: req.query.message,
@@ -62,7 +67,7 @@ app.get('/logs', (req, res) => {
 	let t = ""
 
 	if (!req.query.fromDate || !req.query.toDate) {
-		logs("2020-03-01 01:01", "2020-05-01 01:01")
+		logs("2020-03-01 01:01", "2020-05-01 01:01", authKey, token)
 			.then(resp => {
 				console.log(resp)
 				return resp
@@ -77,7 +82,7 @@ app.get('/logs', (req, res) => {
 		f = req.query.fromDate
 		t = req.query.toDate
 
-		logs(f, t)
+		logs(f, t, PLIVOAUTH, PLIVOTOKEN)
 			.then(resp => {
 				return resp
 			}).then(r => {

@@ -1,9 +1,6 @@
 var plivo = require('plivo');
 
-const AUTH = "MAMWU1M2FKMZCXMWUZOG"
-const TOKEN = "OGU1NmY4YzlmOWNiNDVhZDU1MGQzZDhjNmMyYWE0"
-
-const createMessage = (dest, msg) => {
+const createMessage = (dest, msg, AUTH, TOKEN) => {
     'use strict';
     var client = new plivo.Client(AUTH, TOKEN);
     client.messages.create(
