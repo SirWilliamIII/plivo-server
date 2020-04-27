@@ -24,7 +24,7 @@ const resultMessage = document.querySelector('#resultsMessage1')
 const resultMessageThree = document.querySelector('#resultsMessage3')
 
 const isValidNum = (num) => {
-    var valNum = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
+    var valNum = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
     if (num.value.match(valNum)) {
         return true;
     } else {
