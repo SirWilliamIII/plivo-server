@@ -1,18 +1,5 @@
 console.log('Client side javascript file is loaded!')
 
-// var logsUrl = "http://localhost:4000/logs"
-
-// fetch(logsUrl).then(res => {
-//     return res.json()
-//         .then((data) => {
-//             if (data.error) {
-//                 console.log(data.error)
-//             } else {
-//                 console.log(data)
-//             }
-//         })
-// })
-
 let inputForm = document.getElementById("form1")
 const message = document.querySelector("input[name='message']")
 const number = document.querySelector("input[name='number']")
@@ -20,6 +7,9 @@ const messageOne = document.querySelector('#resultsMessage')
 const messageTwo = document.querySelector('#resultsMessage2')
 const resultMessage = document.querySelector('#resultsMessage1')
 const resultMessageThree = document.querySelector('#resultsMessage3')
+
+const prodUrl = "https://plivo-express.herokuapp.com"
+const localUrl = "http://localhost:3000"
 
 const isValidNum = (num) => {
     var valNum = /^\+?[0-9]+$/;
@@ -53,48 +43,53 @@ const isValidDate = (date) => {
 
 }
 
-inputForm.addEventListener('submit', e => {
-    e.preventDefault()
+if (inputForm) {
+    inputForm.addEventListener('submit', e => {
+        e.preventDefault()
 
-    const m = message.value
-    const n = number.value
+        const m = message.value
+        const n = number.value
 
-    messageOne.textContent = 'Loading...'
-    messageTwo.textContent = ''
+        messageOne.textContent = 'Loading...'
+        messageTwo.textContent = ''
 
-    if (isValidNum(number)) {
-        fetch("https://plivo-express.herokuapp.com/send_message?number=" + n + "&message=" + m)
-            .then(res => {
-                console.log(res)
-                if (res.status != 200) {
-                    messageOne.textContent = "Error"
-                } else {
-                    messageOne.textContent = "Sent message: " + m
-                    messageTwo.textContent = "To number: " + n
-                }
-            })
-        m = ''
-        n = ''
-    }
+        if (isValidNum(number)) {
+            fetch(localUrl + "/send_message?number=" + n + "&message=" + m)
+                .then(res => {
+                    console.log(res)
+                    if (res.status != 200) {
+                        messageOne.textContent = "Error"
+                    } else {
+                        messageOne.textContent = "Sent message: " + m
+                        messageTwo.textContent = "To number: " + n
+                    }
+                })
+            m = ''
+            n = ''
+        }
 
-})
+    })
+}
 
 let dateForm = document.getElementById("form2")
-const fromDate = document.querySelector("input[name='fromDate']")
-const toDate = document.querySelector("input[name='toDate']")
+let fromDate = document.querySelector("input[name='fromDate']")
+let toDate = document.querySelector("input[name='toDate']")
 
-dateForm.addEventListener('click', e => {
-    e.preventDefault()
 
-    fetch("https://plivo-express.herokuapp.com/logs?fromDate=" + fromDate.value + "&toDate=" + toDate.value)
-        .then(res => {
-            if (res.status != 200) {
-                messageOne.textContent = "Error"
-            } else {
-                messageOne.textContent = ""
-            }
-        })
+if (dateForm) {
+    dateForm.addEventListener('click', e => {
+        e.preventDefault()
 
-    f = ''
-    t = ''
-})
+        fetch(localUrl + "/logs?fromDate=" + fromDate.value + "&toDate=" + toDate.value)
+            .then(res => {
+                if (res.status != 200) {
+                    resultMessage.textContent = "Error"
+                    resultMessageThree.textContent = "Loading..."
+                } else {
+                    resultMessage.textContent = res.status
+                }
+            }).catch(e => {
+                console.log(e)
+            })
+    })
+}

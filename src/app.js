@@ -18,9 +18,6 @@ const authKey = process.env.PLIVOAUTH
 const token = process.env.PLIVOTOKEN
 
 
-console.log(process.env)
-
-
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -74,7 +71,7 @@ app.get('/logs', (req, res) => {
 	if (!req.query.fromDate || !req.query.toDate) {
 		logs("2020-03-01 01:01", "2020-05-01 01:01", authKey, token)
 			.then(resp => {
-				console.log(resp)
+
 				return resp
 			}).then(r => {
 				res.render('logs', {
@@ -84,18 +81,18 @@ app.get('/logs', (req, res) => {
 			})
 	} else if (req.query.fromDate && req.query.toDate) {
 
-		f = req.query.fromDate
-		t = req.query.toDate
-
-		logs(f, t, PLIVOAUTH, PLIVOTOKEN)
+		logs(req.query.fromDate, req.query.toDate, authKey, token)
 			.then(resp => {
+
 				return resp
 			}).then(r => {
-				console.log(r)
+
 				res.render('logs', {
 					logs: r,
 					title: "LOGS"
 				})
+			}).catch(e => {
+				console.log(e)
 			})
 
 	}
