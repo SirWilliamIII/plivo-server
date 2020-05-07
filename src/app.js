@@ -37,8 +37,6 @@ app.get('/', (req, res) => {
 	})
 })
 
-
-// Endpoint to send text
 app.get('/send_message', (req, res) => {
 
 	if (!req.query.number) {
@@ -59,14 +57,16 @@ app.get('/send_message', (req, res) => {
 		number: req.query.number
 	})
 })
-////////////////////////////
-
 
 
 app.get('/logs', (req, res) => {
 
 	if (!req.query.fromDate || !req.query.toDate) {
-		logs("2020-03-01 01:01", "2020-07-01 01:01", authKey, token)
+
+		const fD = "2020-03-01 01:01"
+		const tD = "2020-12-01 01:01"
+
+		logs(fD, tD, authKey, token)
 			.then(resp => {
 				return resp
 			}).then(r => {
@@ -76,6 +76,7 @@ app.get('/logs', (req, res) => {
 				})
 			})
 	} else if (req.query.fromDate && req.query.toDate) {
+
 		logs(req.query.fromDate, req.query.toDate, authKey, token)
 			.then(resp => {
 				return resp
@@ -101,6 +102,7 @@ app.get('*', (req, res) => {
 	})
 })
 
+
 app.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`)
+	console.log(`Listening on port ${ PORT }`)
 })
