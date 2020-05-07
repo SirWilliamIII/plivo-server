@@ -48,7 +48,7 @@ if (inputForm) {
 		messageTwo.textContent = ''
 
 		if (isValidNum(number)) {
-			fetch(localUrl + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
+			fetch(prodUrl + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
 				console.log(res)
 				if (res.status != 200) {
 					messageOne.textContent = 'Error'
@@ -69,7 +69,7 @@ const toDate = document.getElementById('toD')
 if (dateForm) {
 	submitButton.addEventListener('submit', (e) => {
 		e.preventDefault()
-		fetch(localUrl + '/logs?fromDate=' + fromDate.value + '&toDate=' + toDate.value)
+		fetch(prodUrl + '/logs?fromDate=' + fromDate.value + '&toDate=' + toDate.value)
 			.then((res) => {
 				console.log(res)
 				if (res.status != 200) {
