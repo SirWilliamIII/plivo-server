@@ -6,7 +6,8 @@ const getLogs = (fromTime, toTime, AUTH, TOKEN) => {
     return client.messages
         .list({
             message_time__gt: fromTime,
-            message_time__lte: toTime
+            message_time__lte: toTime,
+            limit: 100
         })
         .then(res => {
             return res
