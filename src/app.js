@@ -32,7 +32,7 @@ app.use(express.static(publicDirPath))
 app.get('/', (req, res) => {
 	console.log(req)
 	res.render('index', {
-		title: 'TEXT SOMEONE',
+		title: 'FREE TEXTS!',
 		name: 'Will Carpenter'
 	})
 })

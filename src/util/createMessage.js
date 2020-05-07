@@ -8,7 +8,7 @@ const createMessage = (dest, msg, AUTH, TOKEN) => {
         dest,
         msg, {
             method: "POST",
-            url: "http://example.com/sms_status/"
+            url: "http://localhost:3000"
         }
     ).then(res => {
         console.log(res)

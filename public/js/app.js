@@ -1,22 +1,28 @@
-console.log('Client side javascript file is loaded!')
-
 let inputForm = document.getElementById("form1")
 const message = document.querySelector("input[name='message']")
 const number = document.querySelector("input[name='number']")
-const messageOne = document.querySelector('#resultsMessage')
-const messageTwo = document.querySelector('#resultsMessage2')
-let resultMessage = document.querySelector('#resultsMessage1')
-let resultMessage1 = document.querySelector('#resultsMessage3')
 
-const prodUrl = "https://plivo-express.herokuapp.com"
-const localUrl = "http://localhost:3000"
+let resMessage = document.getElementById('resultsMessage')
+let resMessage2 = document.getElementById('resultsMessage2')
+
+let resMessage3 = document.getElementById('resultsMessage3')
+let resMessage4 = document.getElementById('resultsMessage4')
+
+let dateForm = document.getElementById("form2")
+let fromDate = document.getElementById('fDate')
+let toDate = document.getElementById('tDate')
+const submitButton = document.getElementById('submitButton')
+
+const url = "https://plivo-express.herokuapp.com"
+
+
+console.log('Client side javascript file is loaded!')
 
 const isValidNum = (num) => {
     var valNum = /^\+?[0-9]+$/;
     if (num.value.match(valNum)) {
         return true;
     } else {
-
         alert("Please enter valid phone number");
         return false;
     }
@@ -36,53 +42,46 @@ const isValidDate = (date) => {
     if (date.value.match(valDate)) {
         return true;
     } else {
-
         alert("Please enter date");
         return false;
     }
-
 }
 
 if (inputForm) {
     inputForm.addEventListener('submit', (e) => {
         e.preventDefault()
-
-        messageOne.textContent = 'Loading...'
-        messageTwo.textContent = ''
-
+        resMessage.textContent = 'Loading...'
         if (isValidNum(number)) {
-            fetch(prodUrl + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
+            fetch(url + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
                 console.log(res)
                 if (res.status != 200) {
-                    messageOne.textContent = 'Error'
+                    resMessage.textContent = 'Error'
                 } else {
-                    messageOne.textContent = 'Sent message: ' + message.value
-                    messageTwo.textContent = 'To number: ' + number.value
+                    resMessage.textContent = 'Sent message: ' + message.value
+                    resMessage2.textContent = 'To number: ' + number.value
                 }
             })
         }
     })
 }
 
-let dateForm = document.getElementById("form2")
-let fromDate = document.getElementById('fDate')
-let toDate = document.getElementById('tDate')
-const submitButton = document.getElementById('submitButton')
 
 
 
 if (dateForm) {
     submitButton.addEventListener('submit', (e) => {
         e.preventDefault()
-        resultMessage1.textContent = 'Loading...'
-        fetch(prodUrl + '/logs?fromDate=' + fromDate.value + '&toDate=' + toDate.value)
+
+        resMessage3.textContent = 'Loading...'
+        resMessage4.textContent = ''
+
+        fetch(url + '/logs?fromDate=' + fromDate + '&toDate=' + toDate)
             .then((res) => {
                 console.log(res)
                 if (res.status != 200) {
-                    resultMessage.textContent = 'Error'
+                    resMessage3.textContent = 'Error'
                 } else {
-                    resultMessage1.textContent = res.status
-
+                    resMessage4.textContent = res.status
                 }
             })
             .catch((e) => {
