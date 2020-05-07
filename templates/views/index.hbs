@@ -20,29 +20,45 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
         <style>
+      
+
+
+.content-inside {
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
       .btn-primary {
-        color: #fff;
-        background-color: #0495c9;
-        border-color: #333; /*set the color you want here*/
-}
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
-    color: #fff;
-    background-color: #00b3db;
-    border-color: #333; /*set the color you want here*/
-}
+            color: #fff;
+            background-color: #0495c9;
+            border-color: #333; /*set the color you want here*/
+        }
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+        color: #ccc;
+        background-color: #0431db;
+        border-color: black; /*set the color you want here*/
+    }
     #form1{
         margin: auto;
         width:80% /* value of your choice which suits your alignment */
     }
+    body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.content {
+    flex: 1;
+}
         </style>
         
 </head>
 
 <body>
     <div class="text-center">{{>header}}</div>
-    <div class="container">
+    <div class="container content">
         <div class="row align-items-center">
-            <div class="col-sm-3">
+            <div class="col-sm-12 text-center content-inside">
                 <form id="form1">
                     <div class="form-group">
                     <input name="number" placeholder="Enter Number">
@@ -55,12 +71,13 @@
             </div>
         </div>
     </div>
-            
-
-        <br><br><br>
-        <div class="mx-auto" style="width: 200px;">
+        <div class="row">
+       
+        <div class="text-center">
             <p class="pt-4" id="resultsMessage"></p>
+            <br>
             <p class="pt-4" id="resultsMessage2"></p>
+        </div>
         </div>
 
     {{>footer}}

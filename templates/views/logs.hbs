@@ -17,10 +17,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
+        <style>
+            * {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+
+        </style>
 </head>
 
 <body>
 <div class="text-center">{{>header}}</div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -39,10 +49,6 @@
             </div>
         </div>
         <br><br><br>
-        <p id='resultsMessage3'></p>
-        <p id='resultsMessage4'></p>
-        <br><br><br>
-        
         <table class="table">
             <thead>
             <tr>
@@ -68,7 +74,9 @@
             </tbody>
         </table>
     </div>
+
     {{>footer}}
+    
     <script src="/js/app.js"></script>
 </body>
 

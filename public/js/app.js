@@ -14,7 +14,7 @@ let toDate = document.getElementById('tDate')
 const submitButton = document.getElementById('submitButton')
 
 const url = "https://plivo-express.herokuapp.com"
-
+const localUrl = "http://localhost:3000"
 
 console.log('Client side javascript file is loaded!')
 
@@ -52,7 +52,7 @@ if (inputForm) {
         e.preventDefault()
         resMessage.textContent = 'Loading...'
         if (isValidNum(number)) {
-            fetch(url + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
+            fetch(localUrl + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
                 console.log(res)
                 if (res.status != 200) {
                     resMessage.textContent = 'Error'
@@ -75,7 +75,7 @@ if (dateForm) {
         resMessage3.textContent = 'Loading...'
         resMessage4.textContent = ''
 
-        fetch(url + '/logs?fromDate=' + fromDate + '&toDate=' + toDate)
+        fetch(localUrl + '/logs?fromDate=' + fromDate + '&toDate=' + toDate)
             .then((res) => {
                 console.log(res)
                 if (res.status != 200) {
