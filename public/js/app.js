@@ -15,6 +15,7 @@ const submitButton = document.getElementById('submitButton')
 
 const url = "https://plivo-express.herokuapp.com"
 
+
 console.log('Client side javascript file is loaded!')
 
 const isValidNum = (num) => {
@@ -52,7 +53,6 @@ if (inputForm) {
         resMessage.textContent = 'Loading...'
         if (isValidNum(number)) {
             fetch(url + '/send_message?number=' + number.value + '&message=' + message.value).then((res) => {
-                console.log(res)
                 if (res.status != 200) {
                     resMessage.textContent = 'Error'
                 } else {
@@ -74,7 +74,6 @@ if (dateForm) {
 
         fetch(url + '/logs?fromDate=' + fromDate + '&toDate=' + toDate)
             .then((res) => {
-                console.log(res)
                 if (res.status != 200) {
                     resMessage3.textContent = 'Error'
                 } else {

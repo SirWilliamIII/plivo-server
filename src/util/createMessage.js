@@ -8,7 +8,7 @@ const createMessage = (dest, msg, AUTH, TOKEN) => {
         dest,
         msg, {
             method: "POST",
-            url: "http://localhost:3000"
+            url: "https://plivo-express.herokuapp.com"
         }
     ).then(res => {
         console.log(res)

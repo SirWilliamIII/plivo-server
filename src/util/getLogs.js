@@ -7,7 +7,9 @@ const getLogs = (fromTime, toTime, AUTH, TOKEN) => {
         .list({
             message_time__gt: fromTime,
             message_time__lte: toTime,
-            limit: 100
+            limit: 100,
+            message_type: 'sms',
+            from_number: '12082072987'
         })
         .then(res => {
             return res

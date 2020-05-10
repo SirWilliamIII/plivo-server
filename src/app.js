@@ -30,7 +30,6 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirPath))
 
 app.get('/', (req, res) => {
-	console.log(req)
 	res.render('index', {
 		title: 'FREE TEXTS!',
 		name: 'Will Carpenter'
@@ -76,7 +75,6 @@ app.get('/logs', (req, res) => {
 				})
 			})
 	} else if (req.query.fromDate && req.query.toDate) {
-
 		logs(req.query.fromDate, req.query.toDate, authKey, token)
 			.then(resp => {
 				return resp
